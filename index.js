@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 
-// Route to get all posts
+// Route to get all recipes
 app.get("/api/get", (req,res) => {
     db.query("SELECT * FROM recipes", (err,result) => {
         if(err) {
@@ -20,7 +20,7 @@ app.get("/api/get", (req,res) => {
 });
 
 
-// Route to get one post
+// Route to get one recipe
 app.get("/api/get/:id", (req,res) => {
     const id = req.params.id;
     db.query("SELECT * FROM recipes WHERE id = ?", id, (err,result) => {
@@ -31,6 +31,17 @@ app.get("/api/get/:id", (req,res) => {
         res.send(result);
     });
 });
+
+// Get all categories
+app.get("/api/getCategories", (req, res) => {
+    db.query("SELECT * FROM categories", (err, result) => {
+        if(err) {
+            console.log(err);
+        }
+
+        res.send(result);
+    });
+})
 
 app.get("/api/getDirections/:id", (req, res) => {
     const id = req.params.id;
