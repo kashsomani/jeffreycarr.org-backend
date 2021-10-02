@@ -43,6 +43,7 @@ app.get("/api/getCategories", (req, res) => {
     });
 })
 
+// Route to get directions for a recipe
 app.get("/api/getDirections/:id", (req, res) => {
     const id = req.params.id;
     db.query("SELECT * FROM directions WHERE id = ? ORDER BY step_num", id, (err,result) => {
@@ -54,9 +55,11 @@ app.get("/api/getDirections/:id", (req, res) => {
     });
 });
 
+// Route to get ingredients for a recipe
 app.get("/api/getIngredients/:id", (req, res) => {
     const id = req.params.id;
-    db.query("SELECT * FROM ingredients WHERE id = ?", id, (err,result) => {
+    const q = ("SELECT * FROM sys.ingredients, sys.rIngredients WHERE sys.rIngredients.id=1 AND sys.rIngredients.ingredient_id=sys.ingredients.ingredient_id;");
+    db.query(q, id, (err,result) => {
         if(err) {
             console.log(err);
         }
