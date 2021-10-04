@@ -12,12 +12,21 @@ let corsOptions = {
 app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 5000;
-let connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
-connection.connect();
+
+let pool = mysql.createPool({
+    connectionLimit: 100,
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PWD,
+    database: process.env.DB
+})
+
+// let connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
+// connection.connect();
 console.log("Connected to database successful");
 
 function performQuery(query, res) {
-    connection.query(query, (err, result) => {
+    pool.query(query, (err, result) => {
         if(err) {
             console.log(err);
         }
