@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 let pool = mysql.createPool({
     connectionLimit: 100,
+    host: process.env.HOST,
     database: process.env.CLEARDB_DATABASE_URL
 });
 
