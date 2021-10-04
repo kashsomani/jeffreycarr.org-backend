@@ -1,12 +1,13 @@
 const mysql = require('mysql');
+const fs = require('fs');
 
 const db = mysql.createConnection({
-    host: process.env.db,
-    user: process.env.user,
-    password: process.env.password,
-    database: process.env.database,
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PWD,
+    database: process.env.DB,
     ssl: {
-        ca: fs.readFileSync('../app/rds-ca-2019-root.pem')
+        ca: fs.readFileSync('app/rds-ca-2019-root.pem')
     }
 });
 
