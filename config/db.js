@@ -7,7 +7,7 @@ const db = mysql.createConnection({
     password: process.env.PWD,
     database: process.env.DB,
     ssl: {
-        ca: fs.openSync('app/global-bundle.pem')
+        ca: fs.readFileSync('app/global-bundle.pem')
     }
 });
 
