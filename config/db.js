@@ -7,7 +7,7 @@ const db = mysql.createConnection({
     password: process.env.PWD,
     database: process.env.DB,
     ssl: {
-        ca: fs.readFileSync('app/rds-ca-2019-root.pem')
+        ca: fs.readFileSync('app/global-bundle.pem')
     }
 });
 
