@@ -6,6 +6,9 @@ const db = mysql.createConnection({
     user: process.env.USER,
     password: process.env.PWD,
     database: process.env.DB,
+    ssl: {
+        ca: fs.openSync('/app/global-bundle.pem')
+    }
 });
 
 module.exports = db;
