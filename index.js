@@ -18,10 +18,7 @@ let pool = mysql.createPool({
     host: process.env.HOST,
     user: process.env.USER,
     password: process.env.PWD,
-    database: process.env.DB,
-    ssl: {
-        ca: 'cleardb-ca.pem'
-    }
+    database: process.env.DB
 });
 
 // let connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
