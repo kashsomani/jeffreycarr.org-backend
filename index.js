@@ -3,7 +3,6 @@ const db = require('./config/db');
 const cors = require('cors');
 
 const app = express();
-const PORT = 3002;
 app.use(cors());
 app.use(express.json());
 
@@ -68,16 +67,4 @@ app.get("/api/getIngredients/:id", (req, res) => {
     });
 });
 
-
-// TODO
-// Route to create a recipe
-// app.post('/api/create', (req,res) => {
-//     const name = req.body.name;
-//     const details = req.body.details;
-//     const category = req.body.category;
-//     const crockpot = req.body.crockpot;
-// });
-
-app.listen(PORT, ()=>{
-    console.log(`Server is running on ${PORT}`)
-})
+app.listen(process.env.PORT || 5000);

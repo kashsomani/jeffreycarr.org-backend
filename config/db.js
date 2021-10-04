@@ -8,6 +8,6 @@ const db = mysql.createConnection({
     ssl: {
         ca: '../app/rds-combined-ca-bundle.pem'
     }
-});
+}).then(console.log("Successful connection to database!"));
 
 module.exports = db;
