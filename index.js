@@ -3,8 +3,13 @@ let mysql = require('mysql');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
 app.use(express.json());
+
+// CORS
+let corsOptions = {
+    origin: '*'
+}
+app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 5000;
 let connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
