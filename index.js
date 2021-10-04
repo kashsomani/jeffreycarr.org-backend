@@ -58,7 +58,7 @@ app.get("/api/getDirections/:id", (req, res) => {
 // Route to get ingredients for a recipe
 app.get("/api/getIngredients/:id", (req, res) => {
     const id = req.params.id;
-    const q = ("SELECT * FROM sys.ingredients, sys.rIngredients WHERE sys.rIngredients.id=1 AND sys.rIngredients.ingredient_id=sys.ingredients.ingredient_id;");
+    const q = ("SELECT * FROM ingredients, rIngredients WHERE rIngredients.id=" + id + " AND rIngredients.ingredient_id=ingredients.id_ingredient;");
     db.query(q, id, (err,result) => {
         if(err) {
             console.log(err);
