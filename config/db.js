@@ -8,6 +8,6 @@ const db = mysql.createConnection({
     ssl: {
         ca: fs.readFileSync('../app/rds-ca-2019-root.pem')
     }
-}).then(console.log("Successful connection to database!"));
+});
 
 module.exports = db;
