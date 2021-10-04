@@ -6,7 +6,7 @@ const db = mysql.createConnection({
     password: process.env.password,
     database: process.env.database,
     ssl: {
-        ca: '../app/rds-combined-ca-bundle.pem'
+        ca: fs.readFileSync('../app/rds-combined-ca-bundle.pem')
     }
 }).then(console.log("Successful connection to database!"));
 
