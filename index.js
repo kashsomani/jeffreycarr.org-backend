@@ -15,7 +15,13 @@ const PORT = process.env.PORT || 5000;
 
 let pool = mysql.createPool({
     connectionLimit: 100,
-    socketPath: process.env.CLEARDB_DATABASE_URL
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PWD,
+    database: process.env.DB,
+    ssl: {
+        ca: 'cleardb-ca.pem'
+    }
 });
 
 // let connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
