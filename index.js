@@ -12,7 +12,7 @@ const mysql = require('mysql');
 /* Other */
 const PORT = process.env.PORT || 5000;
 
-let pool = mysql.createPool(process.env.CONN);
+let pool = mysql.createPool(process.env.CLEARDB_DATABASE_URL);
 
 require('./routes/getRoutes')(app, pool);
 
