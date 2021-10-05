@@ -12,7 +12,7 @@ module.exports = (app, pool) => {
 
     // Route to get all recipes
     app.get("/api/get", (req,res) => {
-        let q = performQuery("SELECT * FROM recipes", res);
+        let q = performQuery("SELECT * FROM recipes ORDER BY name", res);
     });
 
     // Route to get one recipe
@@ -24,7 +24,7 @@ module.exports = (app, pool) => {
 
     // Get all categories
     app.get("/api/getCategories", (req, res) => {
-        let q = performQuery("SELECT * FROM categories", res);
+        let q = performQuery("SELECT * FROM categories ORDER BY name", res);
     })
 
     // Route to get directions for a recipe
